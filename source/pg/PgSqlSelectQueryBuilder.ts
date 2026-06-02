@@ -52,7 +52,7 @@ export default class PgSqlSelectQueryBuilder extends SqlSelectQueryBuilder {
   /**
    * @todo
    */
-  public get values() {
+  public get values(): unknown[] {
     return this._bindValueArray;
   }
 

@@ -30,7 +30,7 @@ export default class PgSqlDeleteQueryBuilder extends SqlDeleteQueryBuilder {
   /**
    * @todo
    */
-  public override get values() {
+  public override get values(): unknown[] {
     return this._bindValueArray;
   }
 

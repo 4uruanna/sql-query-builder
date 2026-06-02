@@ -24,7 +24,7 @@ export default class PgSqlInsertQueryBuilder extends SqlInsertQueryBuilder {
   /**
    * @todo
    */
-  public override get values() {
+  public override get values(): unknown[] {
     return this._bindValueArray;
   }
 
