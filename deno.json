@@ -1,0 +1,12 @@
+{
+  "name": "@jackofblades/sql-query-builder",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "exports": "./source/mod.ts",
+  "tasks": {
+  },
+  "imports": {
+    "@faker-js/faker": "npm:@faker-js/faker@^10.4.0",
+    "@std/assert": "jsr:@std/assert@^1.0.19"
+  }
+}
