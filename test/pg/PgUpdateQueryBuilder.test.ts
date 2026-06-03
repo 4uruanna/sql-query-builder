@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import PgQueryBuilder from "../../source/pg/PgQueryBuilder.ts";
+import { PgQueryBuilder } from "../../source/pg/PgQueryBuilder.ts";
 import { assertStringIncludes } from "@std/assert/string-includes";
 import { assertEquals } from "@std/assert/equals";
 

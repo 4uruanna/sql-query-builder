@@ -1,17 +1,17 @@
-import type ISelectQueryBuilder from "../interface/ISelectQueryBuilder.ts";
-import type IDeleteQueryBuilder from "../interface/IDeleteQueryBuilder.ts";
-import type IInsertQueryBuilder from "../interface/IInsertQueryBuilder.ts";
-import type IUpdateQueryBuilder from "../interface/IUpdateQueryBuilder.ts";
-import PgDeleteQueryBuilder from "./PgDeleteQueryBuilder.ts";
-import PgInsertQueryBuilder from "./PgInsertQueryBuilder.ts";
-import PgSelectQueryBuilder from "./PgSelectQueryBuilder.ts";
-import PgUpdateQueryBuilder from "./PgUpdateQueryBuilder.ts";
-import SqlQueryBuilder from "../abstract/SqlQueryBuilder.ts";
+import type { ISelectQueryBuilder } from "../interface/ISelectQueryBuilder.ts";
+import type { IDeleteQueryBuilder } from "../interface/IDeleteQueryBuilder.ts";
+import type { IInsertQueryBuilder } from "../interface/IInsertQueryBuilder.ts";
+import type { IUpdateQueryBuilder } from "../interface/IUpdateQueryBuilder.ts";
+import { PgDeleteQueryBuilder } from "./PgDeleteQueryBuilder.ts";
+import { PgInsertQueryBuilder } from "./PgInsertQueryBuilder.ts";
+import { PgSelectQueryBuilder } from "./PgSelectQueryBuilder.ts";
+import { PgUpdateQueryBuilder } from "./PgUpdateQueryBuilder.ts";
+import { SqlQueryBuilder } from "../abstract/SqlQueryBuilder.ts";
 
 /**
  * @todo
  */
-export default class PgQueryBuilder extends SqlQueryBuilder {
+export class PgQueryBuilder extends SqlQueryBuilder {
   /**
    * @todo
    */

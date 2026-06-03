@@ -1,7 +1,7 @@
 /**
  * @todo
  */
-export default interface IWhere<T> {
+export interface IWhere<T> {
   /**
    * Defines a condition
    * @param condition

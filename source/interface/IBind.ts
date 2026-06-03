@@ -1,7 +1,7 @@
 /**
  * @todo
  */
-export default interface IBind<T> {
+export interface IBind<T> {
   /**
    * Returns the next bindable index
    * e.g.

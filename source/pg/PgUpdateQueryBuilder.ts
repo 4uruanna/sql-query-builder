@@ -1,11 +1,11 @@
-import PgBuilder from "./PgBuilder.ts";
-import type IQuery from "../interface/IQuery.ts";
-import type IUpdateQueryBuilder from "../interface/IUpdateQueryBuilder.ts";
+import { PgBuilder } from "./PgBuilder.ts";
+import type { IQuery } from "../interface/IQuery.ts";
+import type { IUpdateQueryBuilder } from "../interface/IUpdateQueryBuilder.ts";
 
 /**
  * @todo
  */
-export default class PgUpdateQueryBuilder extends PgBuilder
+export class PgUpdateQueryBuilder extends PgBuilder
   implements IUpdateQueryBuilder {
   private static readonly GAP: number = 256;
   private _setColumnArray: string[] = [];

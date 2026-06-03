@@ -1,12 +1,12 @@
-import type IBuild from "./IBuild.ts";
-import type IWhere from "./IWhere.ts";
-import type IBind from "./IBind.ts";
-import type IJoin from "./IJoin.ts";
+import type { IBuild } from "./IBuild.ts";
+import type { IWhere } from "./IWhere.ts";
+import type { IBind } from "./IBind.ts";
+import type { IJoin } from "./IJoin.ts";
 
 /**
  * @todo
  */
-export default interface IDeleteQueryBuilder
+export interface IDeleteQueryBuilder
   extends
     IBuild,
     IWhere<IDeleteQueryBuilder>,

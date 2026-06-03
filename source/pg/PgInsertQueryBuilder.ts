@@ -1,11 +1,11 @@
-import type IInsertQueryBuilder from "../interface/IInsertQueryBuilder.ts";
-import PgBuilder from "./PgBuilder.ts";
-import type IQuery from "../interface/IQuery.ts";
+import type { IInsertQueryBuilder } from "../interface/IInsertQueryBuilder.ts";
+import { PgBuilder } from "./PgBuilder.ts";
+import type { IQuery } from "../interface/IQuery.ts";
 
 /**
  * @todo
  */
-export default class PgInsertQueryBuilder extends PgBuilder
+export class PgInsertQueryBuilder extends PgBuilder
   implements IInsertQueryBuilder {
   private _valueCount = 0;
 

@@ -1,9 +1,9 @@
-import type IBuild from "./IBuild.ts";
+import type { IBuild } from "./IBuild.ts";
 
 /**
  * @todo
  */
-export default interface IInsertQueryBuilder extends IBuild {
+export interface IInsertQueryBuilder extends IBuild {
   /**
    * @todo
    * @param table

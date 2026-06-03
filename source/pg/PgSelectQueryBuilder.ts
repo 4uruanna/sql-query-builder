@@ -1,6 +1,6 @@
-import type ISelectQueryBuilder from "../interface/ISelectQueryBuilder.ts";
-import type IQuery from "../interface/IQuery.ts";
-import PgBuilder from "./PgBuilder.ts";
+import type { ISelectQueryBuilder } from "../interface/ISelectQueryBuilder.ts";
+import type { IQuery } from "../interface/IQuery.ts";
+import { PgBuilder } from "./PgBuilder.ts";
 import {
   type QueryOrder,
   QueryOrderEnumerator,
@@ -9,7 +9,7 @@ import {
 /**
  * @todo
  */
-export default class PgSelectQueryBuilder extends PgBuilder
+export class PgSelectQueryBuilder extends PgBuilder
   implements ISelectQueryBuilder {
   /**
    * @todo

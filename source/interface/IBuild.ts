@@ -1,9 +1,9 @@
-import type IQuery from "./IQuery.ts";
+import type { IQuery } from "./IQuery.ts";
 
 /**
  * @todo
  */
-export default interface IBuild {
+export interface IBuild {
   /**
    * Return raw query
    */

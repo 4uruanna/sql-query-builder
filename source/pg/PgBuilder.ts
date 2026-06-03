@@ -1,6 +1,6 @@
 import { type Join, JoinEnumerator } from "../enumerator/Join.ts";
 
-export default abstract class PgBuilder {
+export abstract class PgBuilder {
   /**
    * @todo
    */

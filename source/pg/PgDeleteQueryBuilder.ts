@@ -1,11 +1,11 @@
-import type IDeleteQueryBuilder from "../interface/IDeleteQueryBuilder.ts";
-import type IQuery from "../interface/IQuery.ts";
-import PgBuilder from "./PgBuilder.ts";
+import type { IDeleteQueryBuilder } from "../interface/IDeleteQueryBuilder.ts";
+import type { IQuery } from "../interface/IQuery.ts";
+import { PgBuilder } from "./PgBuilder.ts";
 
 /**
  * @todo
  */
-export default class PgDeleteQueryBuilder extends PgBuilder
+export class PgDeleteQueryBuilder extends PgBuilder
   implements IDeleteQueryBuilder {
   /**
    * @todo

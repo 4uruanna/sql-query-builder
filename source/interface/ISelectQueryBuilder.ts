@@ -1,13 +1,13 @@
-import type IBuild from "./IBuild.ts";
-import type IWhere from "./IWhere.ts";
-import type IJoin from "./IJoin.ts";
-import type IBind from "./IBind.ts";
+import type { IBuild } from "./IBuild.ts";
+import type { IWhere } from "./IWhere.ts";
+import type { IJoin } from "./IJoin.ts";
+import type { IBind } from "./IBind.ts";
 import type { QueryOrder } from "../enumerator/QueryOrder.ts";
 
 /**
  * @todo
  */
-export default interface ISelectQueryBuilder
+export interface ISelectQueryBuilder
   extends
     IBuild,
     IWhere<ISelectQueryBuilder>,

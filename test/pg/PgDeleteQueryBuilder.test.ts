@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { assertStringIncludes } from "@std/assert/string-includes";
-import PgQueryBuilder from "../../source/pg/PgQueryBuilder.ts";
+import { PgQueryBuilder } from "../../source/pg/PgQueryBuilder.ts";
 import { assertEquals } from "@std/assert/equals";
 
 Deno.test("PgSqlDeleteQueryBuilder tests", async (group) => {
