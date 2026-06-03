@@ -9,7 +9,7 @@ export default class PgInsertQueryBuilder extends PgBuilder
   implements IInsertQueryBuilder {
   private _valueCount = 0;
 
-  protected get row() {
+  protected get queryRow(): string {
     let row: string = "(";
 
     for (let id = 0; id < this._valueCount; id++) {
@@ -51,7 +51,7 @@ export default class PgInsertQueryBuilder extends PgBuilder
     return {
       parameters: this.parameters,
       query: `INSERT INTO ${this.table} (${this.queryColumns})` +
-        `\r\nVALUES ${this.row}`,
+        `\r\nVALUES ${this.queryRow}`,
     };
   }
 }

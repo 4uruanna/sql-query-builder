@@ -32,3 +32,8 @@ export * from "./enumerator/QueryOrder.ts";
  ****************************************/
 
 export { default as PgQueryBuilder } from "./pg/PgQueryBuilder.ts";
+export { default as PgBuilder } from "./pg/PgBuilder.ts";
+export { default as PgDeleteQueryBuilder } from "./pg/PgDeleteQueryBuilder.ts";
+export { default as PgInsertQueryBuilder } from "./pg/PgInsertQueryBuilder.ts";
+export { default as PgSelectQueryBuilder } from "./pg/PgSelectQueryBuilder.ts";
+export { default as PgUpdateQueryBuilder } from "./pg/PgUpdateQueryBuilder.ts";

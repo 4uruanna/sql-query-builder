@@ -46,7 +46,7 @@ export default class PgSelectQueryBuilder extends PgBuilder
   /**
    * @todo
    */
-  protected get queryOrderBy() {
+  protected get queryOrderBy(): string {
     let orderBy = "";
 
     if (this._orderArray.length) {
