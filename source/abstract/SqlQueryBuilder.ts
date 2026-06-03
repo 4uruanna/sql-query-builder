@@ -1,7 +1,7 @@
-import type SqlDeleteQueryBuilder from "./SqlDeleteQueryBuilder.ts";
-import type SqlInsertQueryBuilder from "./SqlInsertQueryBuilder.ts";
-import type SqlSelectQueryBuilder from "./SqlSelectQueryBuilder.ts";
-import type SqlUpdateQueryBuilder from "./SqlUpdateQueryBuilder.ts";
+import type ISelectQueryBuilder from "../interface/ISelectQueryBuilder.ts";
+import type IDeleteQueryBuilder from "../interface/IDeleteQueryBuilder.ts";
+import type IInsertQueryBuilder from "../interface/IInsertQueryBuilder.ts";
+import type IUpdateQueryBuilder from "../interface/IUpdateQueryBuilder.ts";
 
 /**
  * Main sql builder
@@ -10,20 +10,20 @@ export default abstract class SqlQueryBuilder {
   /**
    * Return delete builder
    */
-  public abstract delete(table: string): SqlDeleteQueryBuilder;
+  public abstract delete(): IDeleteQueryBuilder;
 
   /**
    * Return insert builder
    */
-  public abstract insert(table: string): SqlInsertQueryBuilder;
+  public abstract insert(): IInsertQueryBuilder;
 
   /**
    * Return select builder
    */
-  public abstract select(table: string): SqlSelectQueryBuilder;
+  public abstract select(): ISelectQueryBuilder;
 
   /**
    * Return update builder
    */
-  public abstract update(table: string): SqlUpdateQueryBuilder;
+  public abstract update(): IUpdateQueryBuilder;
 }

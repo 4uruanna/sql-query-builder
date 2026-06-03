@@ -1,12 +1,7 @@
 /**
  * @todo
  */
-export default interface ISqlBind<T> {
-  /**
-   * @todo
-   */
-  get values(): unknown[];
-
+export default interface IBind<T> {
   /**
    * Returns the next bindable index
    * e.g.
@@ -16,5 +11,5 @@ export default interface ISqlBind<T> {
    *  .build();
    * ```
    */
-  bind(value: unknown): string;
+  setParameter(value: unknown, name?: string | number): T;
 }

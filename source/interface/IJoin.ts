@@ -3,7 +3,7 @@ import type { Join } from "../enumerator/Join.ts";
 /**
  * @todo
  */
-export default interface ISqlJoin<T> {
+export default interface IJoin<T> {
   /**
    * @todo
    */

@@ -5,64 +5,56 @@
 ### CRUD PG
 
 ```ts
-import PgSqlQueryBuilder from "./PgSqlQueryBuilder";
-import PgSqlSelectQueryBuilder from "./PgSqlSelectQueryBuilder";
-import PgSqlDeleteQueryBuilder from "./PgSqlDeleteQueryBuilder";
-
-const pgBuilder = new PgSqlQueryBuilder();
+import { PgQueryBuilder } from "@jackofblades/sql-query-builder";
 
 // Insert
 // ....................
 
-const insert = pgBuilder.insert("table");
+let output = new PgQueryBuilder()
+  .insert()
+  .into("table")
+  .columns("foo", "bar", "baz")
+  .values("foo_val", "bar_val", "baz_val")
+  .build();
 
-const insertQuery = insert.columns("foo", "bar", "baz")
-    .rows(["fooVal", "barVal", "bazVal"])
-    .build();
-
-const insertValues = insert.values; // Contains all values
+/**
+ * output:
+ * {
+ *  query: "INSERT INTO usYTcRB (foo, bar, baz) VALUES ($1, $2, $3)",
+ *  parameters: [
+ *    { id: 1, value: "foo_val" },
+ *    { id: 2, value: "bar_val" },
+ *    { id: 3, value: "baz_val" }
+ *  ]
+ * }
+ */
 
 // Select
 // ....................
 
-const selectBuilder: PgSqlSelectQueryBuilder = pgBuilder.select("table ta");
+output = new PgQueryBuilder()
+  .select()
+  .setParameter("alice")
+  .setParameter(18)
+  .from("table t")
+  .columns("t.name", "c.name")
+  .join("INNER", "t.id", "cats c", "c.owner")
+  .where("t.name = $1")
+  .or("c.age > $2")
+  .orderBy("t.name", "ASC")
+  .orderBy("c.name", "DESC")
+  .limit(10)
+  .offset(0)
+  .build();
 
-const bind = "hello";
-
-const selectQuery = selectBuilder
-    .columns("ta.foo", "ta.bar", "ta.baz")
-    .where(`ta.foo = ${selectBuilder.bind(bind)}`)
-    .and(`ta.bar = TRUE`)
-    .or(`ta.foo IS NULL`)
-    .build() // Building Where
-    .join("INNER", 'ta.id', "another tb", "tb.id")
-    .build() // Building Select
-
-const selectValues = selectBuilder.values; // Contains all values
-
-// Update
-// ....................
-
-const updateBuilder = pgBuilder.update("table ta");
-
-const updateQuery = updateBuilder.where(`ta.foo = ${selectBuilder.bind(bind)}`)
-    .and(`ta.bar = TRUE`)
-    .or(`ta.foo IS NULL`)
-    .build() // Building Where
-    .join("INNER", 'ta.id', "another tb", "tb.id")
-    .set(`ta.foo = ${updateBuilder.bind(bind)}`)
-    .build() // Building Select
-
-const updateValues = selectBuilder.values; // Contains all values
-
-// Delete
-// ....................
-
-const deleteBuilder: PgSqlDeleteQueryBuilder = pgBuilder.delete("table ta");
-
-const deleteQuery = deleteBuilder.where(`ta.foo = ${selectBuilder.bind(bind)}`)
-    .build() // Building Where
-    .build(); // Building Delete
-
-const deleteValues = selectBuilder.values; // Contains all values
+/**
+ * output:
+ * {
+ *  query: "SELECT t.name, c.name FROM table t INNER ...",
+ *  parameters: [
+ *    { id: 1, value: "alice" },
+ *    { id: 2, value: "18" }
+ *  ]
+ * }
+ */
 ```
