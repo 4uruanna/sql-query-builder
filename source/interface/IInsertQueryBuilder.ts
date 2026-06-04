@@ -21,4 +21,10 @@ export interface IInsertQueryBuilder extends IBuild {
    * @param values
    */
   values(...values: unknown[]): IInsertQueryBuilder;
+
+  /**
+   * @todo
+   * @param sequence
+   */
+  lastVal(sequence?: string): IInsertQueryBuilder;
 }

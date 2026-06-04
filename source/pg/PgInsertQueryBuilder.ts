@@ -9,6 +9,8 @@ export class PgInsertQueryBuilder extends PgBuilder
   implements IInsertQueryBuilder {
   private _valueCount = 0;
 
+  private _lastVal = "";
+
   protected get queryRow(): string {
     let row: string = "(";
 
@@ -50,8 +52,14 @@ export class PgInsertQueryBuilder extends PgBuilder
   public build(): IQuery {
     return {
       parameters: this.parameters,
-      query: `INSERT INTO ${this.table} (${this.queryColumns})` +
-        `\r\nVALUES ${this.queryRow}`,
+      query: `INSERT INTO ${this.table} (${this.queryColumns})`
+        + `\r\nVALUES ${this.queryRow}`
+        + this._lastVal,
     };
+  }
+
+  public lastVal(sequence: string = "id"): IInsertQueryBuilder {
+    this._lastVal = `\r\nRETURNING ${sequence}`;
+    return this;
   }
 }
