@@ -49,18 +49,21 @@ export class PgUpdateQueryBuilder extends PgBuilder
    * @todo
    */
   public build(): IQuery {
-    const query = `UPDATE ${this.table}
-            SET ${this.querySets}
-                ${this.joins}
-                ${this.queryWhere}
-            `;
+    let query = `UPDATE ${this.table}` +
+      this.querySets +
+      this.joins +
+      this.queryWhere;
 
     return {
-      parameters: this.parameters,
-      query: `UPDATE ${this.table}` +
-        this.querySets +
-        this.joins +
-        this.queryWhere,
+      parameters: this.parameters
+        .map(
+          (parameter, index) => {
+            query = query.replaceAll(`$${parameter.id}`, `$${index+1}`)
+            parameter.id = index+1;
+            return parameter;
+          }
+        ),
+      query
     };
   }
 }

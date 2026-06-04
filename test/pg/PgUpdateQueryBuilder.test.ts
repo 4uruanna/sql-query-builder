@@ -53,14 +53,16 @@ Deno.test("PgSqlUpdateQueryBuilder tests", async (group) => {
 
     const result = new PgQueryBuilder()
       .update()
+      .setParameter("foo")
       .from(tableName)
+      .where(`tn.column_a = $1`)
       .set("tn.foo", parameters[0])
       .set("tn.bar", parameters[1])
       .set("tn.baz", parameters[2])
       .build();
 
-    assertStringIncludes(result.query, `tn.foo = $256,`);
-    assertStringIncludes(result.query, `tn.bar = $257,`);
-    assertStringIncludes(result.query, `tn.baz = $258`);
+    assertStringIncludes(result.query, `tn.foo = $2,`);
+    assertStringIncludes(result.query, `tn.bar = $3,`);
+    assertStringIncludes(result.query, `tn.baz = $4`);
   });
 });
