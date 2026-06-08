@@ -52,9 +52,9 @@ export class PgInsertQueryBuilder extends PgBuilder
   public build(): IQuery {
     return {
       parameters: this.parameters,
-      query: `INSERT INTO ${this.table} (${this.queryColumns})`
-        + `\r\nVALUES ${this.queryRow}`
-        + this._lastVal,
+      query: `INSERT INTO ${this.table} (${this.queryColumns})` +
+        `\r\nVALUES ${this.queryRow}` +
+        this._lastVal,
     };
   }
 

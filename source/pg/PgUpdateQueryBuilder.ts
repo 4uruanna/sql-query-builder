@@ -58,12 +58,12 @@ export class PgUpdateQueryBuilder extends PgBuilder
       parameters: this.parameters
         .map(
           (parameter, index) => {
-            query = query.replaceAll(`$${parameter.id}`, `$${index+1}`)
-            parameter.id = index+1;
+            query = query.replaceAll(`$${parameter.id}`, `$${index + 1}`);
+            parameter.id = index + 1;
             return parameter;
-          }
+          },
         ),
-      query
+      query,
     };
   }
 }

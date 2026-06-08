@@ -92,8 +92,8 @@ export class PgSelectQueryBuilder extends PgBuilder
         `\r\nFROM ${this.table}` +
         this.joins +
         this.queryWhere +
-        this.queryPaging +
-        this.queryOrderBy,
+        this.queryOrderBy +
+        this.queryPaging,
     };
   }
 }
