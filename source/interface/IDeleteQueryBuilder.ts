@@ -4,7 +4,7 @@ import type { IBind } from "./IBind.ts";
 import type { IJoin } from "./IJoin.ts";
 
 /**
- * @todo
+ * Interface for DELETE query builders.
  */
 export interface IDeleteQueryBuilder
   extends
@@ -13,8 +13,9 @@ export interface IDeleteQueryBuilder
     IJoin<IDeleteQueryBuilder>,
     IBind<IDeleteQueryBuilder> {
   /**
-   * @todo
-   * @param table
+   * Sets the table to delete from.
+   * @param table - The table name
+   * @returns The builder instance for method chaining
    */
   from(table: string): IDeleteQueryBuilder;
 }

@@ -9,32 +9,37 @@ import { PgUpdateQueryBuilder } from "./PgUpdateQueryBuilder.ts";
 import { SqlQueryBuilder } from "../abstract/SqlQueryBuilder.ts";
 
 /**
- * @todo
+ * PostgreSQL query builder factory.
+ * Creates PostgreSQL-specific query builders for different query types.
  */
 export class PgQueryBuilder extends SqlQueryBuilder {
   /**
-   * @todo
+   * Creates a PostgreSQL SELECT query builder.
+   * @returns A new PgSelectQueryBuilder instance
    */
   public override select(): ISelectQueryBuilder {
     return new PgSelectQueryBuilder();
   }
 
   /**
-   * @todo
+   * Creates a PostgreSQL UPDATE query builder.
+   * @returns A new PgUpdateQueryBuilder instance
    */
   public override update(): IUpdateQueryBuilder {
     return new PgUpdateQueryBuilder();
   }
 
   /**
-   * @todo
+   * Creates a PostgreSQL DELETE query builder.
+   * @returns A new PgDeleteQueryBuilder instance
    */
   public override delete(): IDeleteQueryBuilder {
     return new PgDeleteQueryBuilder();
   }
 
   /**
-   * @todo
+   * Creates a PostgreSQL INSERT query builder.
+   * @returns A new PgInsertQueryBuilder instance
    */
   public override insert(): IInsertQueryBuilder {
     return new PgInsertQueryBuilder();

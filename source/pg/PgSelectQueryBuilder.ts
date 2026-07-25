@@ -7,27 +7,23 @@ import {
 } from "../enumerator/QueryOrder.ts";
 
 /**
- * @todo
+ * PostgreSQL SELECT query builder.
+ * Builds SELECT queries with support for WHERE, JOIN, ORDER BY, LIMIT, and OFFSET.
  */
 export class PgSelectQueryBuilder extends PgBuilder
   implements ISelectQueryBuilder {
-  /**
-   * @todo
-   */
+  /** Array of ORDER BY clauses */
   private readonly _orderArray: string[] = [];
 
-  /**
-   * @todo
-   */
+  /** The LIMIT value for pagination */
   private _limit: number | undefined = undefined;
 
-  /**
-   * @todo
-   */
+  /** The OFFSET value for pagination */
   private _offset: number | undefined = undefined;
 
   /**
-   * @todo
+   * Builds the LIMIT and OFFSET clause string.
+   * @returns The LIMIT/OFFSET clause string
    */
   protected get queryPaging(): string {
     let paging = "";
@@ -44,7 +40,8 @@ export class PgSelectQueryBuilder extends PgBuilder
   }
 
   /**
-   * @todo
+   * Builds the ORDER BY clause string.
+   * @returns The ORDER BY clause string
    */
   protected get queryOrderBy(): string {
     let orderBy = "";
@@ -57,8 +54,9 @@ export class PgSelectQueryBuilder extends PgBuilder
   }
 
   /**
-   * @todo
-   * @param limit
+   * Sets the maximum number of rows to return.
+   * @param limit - The maximum number of rows
+   * @returns The builder instance for method chaining
    */
   public limit(limit: number): this {
     this._limit = limit;
@@ -66,8 +64,9 @@ export class PgSelectQueryBuilder extends PgBuilder
   }
 
   /**
-   * @todo
-   * @param offset
+   * Sets the number of rows to skip.
+   * @param offset - The number of rows to skip
+   * @returns The builder instance for method chaining
    */
   public offset(offset: number): this {
     this._offset = offset;
@@ -75,7 +74,10 @@ export class PgSelectQueryBuilder extends PgBuilder
   }
 
   /**
-   * @todo
+   * Adds an ORDER BY clause to the query.
+   * @param column - The column to order by
+   * @param order - The sort direction (ASC or DESC)
+   * @returns The builder instance for method chaining
    */
   public orderBy(column: string, order: QueryOrder): ISelectQueryBuilder {
     this._orderArray.push(`${column} ${QueryOrderEnumerator[order]}`);
@@ -83,7 +85,8 @@ export class PgSelectQueryBuilder extends PgBuilder
   }
 
   /**
-   * @todo
+   * Builds the final SELECT query.
+   * @returns The query object containing the SQL string and parameters
    */
   public build(): IQuery {
     return {

@@ -1,39 +1,33 @@
 import { type Join, JoinEnumerator } from "../enumerator/Join.ts";
 
+/**
+ * Abstract base class for PostgreSQL query builders.
+ * Provides common functionality for building PostgreSQL queries.
+ */
 export abstract class PgBuilder {
-  /**
-   * @todo
-   */
+  /** The columns to select (default: "*") */
   protected queryColumns: string = "*";
 
-  /**
-   * @todo
-   * @protected
-   */
+  /** The table to query */
   protected table: string = "";
 
-  /**
-   * @todo
-   * @private
-   */
+  /** The next parameter position (PostgreSQL uses $1, $2, etc.) */
   protected parameterPosition: number = 1;
 
-  /**
-   * @todo
-   */
+  /** Array of query parameters with their identifiers and values */
   protected readonly parameterArray: { id: string | number; value: unknown }[] =
     [];
 
-  /**
-   * @todo
-   */
+  /** Array of WHERE conditions grouped by OR clauses */
   protected readonly whereArray: string[][] = [];
 
-  /**
-   * @todo
-   */
+  /** The JOIN clauses for the query */
   protected joins: string = "";
 
+  /**
+   * Builds the WHERE clause string from the conditions array.
+   * @returns The WHERE clause string with proper formatting
+   */
   protected get queryWhere(): string {
     const length = this.whereArray.length;
     let where: string = "";
@@ -51,6 +45,10 @@ export abstract class PgBuilder {
     return where;
   }
 
+  /**
+   * Returns sorted parameters by their identifier.
+   * @returns Array of parameters sorted by id
+   */
   protected get parameters(): { id: string | number; value: unknown }[] {
     return this.parameterArray.sort((a, b) => {
       if (typeof a.id === "number" && typeof b.id === "number") {
@@ -68,8 +66,9 @@ export abstract class PgBuilder {
   }
 
   /**
-   * @todo
-   * @param table
+   * Sets the table to query.
+   * @param table - The table name
+   * @returns The builder instance for method chaining
    */
   public from(table: string): this {
     this.table = table;
@@ -77,9 +76,10 @@ export abstract class PgBuilder {
   }
 
   /**
-   * @todo
-   * @param value
-   * @param name
+   * Sets a parameter value for the query.
+   * @param value - The parameter value
+   * @param name - Optional parameter name or position identifier
+   * @returns The builder instance for method chaining
    */
   public setParameter(value: unknown, name?: string | number): this {
     if (name === undefined) {
@@ -92,14 +92,18 @@ export abstract class PgBuilder {
   }
 
   /**
-   * @todo
+   * Adds a WHERE condition to the query.
+   * @param condition - The condition string
+   * @returns The builder instance for method chaining
    */
   public where(condition: string): this {
     return this.or(condition);
   }
 
   /**
-   * @todo
+   * Adds an AND condition to the current WHERE clause.
+   * @param condition - The condition string to AND with existing conditions
+   * @returns The builder instance for method chaining
    */
   public and(condition: string): this {
     if (this.whereArray.length === 0) {
@@ -111,7 +115,9 @@ export abstract class PgBuilder {
   }
 
   /**
-   * @todo
+   * Adds an OR condition to the WHERE clause.
+   * @param condition - The condition string for the OR clause
+   * @returns The builder instance for method chaining
    */
   public or(condition: string): this {
     this.whereArray.push([condition]);
@@ -119,7 +125,12 @@ export abstract class PgBuilder {
   }
 
   /**
-   * @todo
+   * Adds a JOIN clause to the query.
+   * @param type - The type of JOIN (INNER, LEFT, RIGHT, FULL)
+   * @param leftColumn - The column from the left table to join on
+   * @param rightTable - The right table to join
+   * @param rightColumn - The column from the right table to join on
+   * @returns The builder instance for method chaining
    */
   public join(
     type: Join,
@@ -136,7 +147,9 @@ export abstract class PgBuilder {
   }
 
   /**
-   * @todo
+   * Sets the columns to select or insert.
+   * @param columns - Column names or expressions
+   * @returns The builder instance for method chaining
    */
   public columns(...columns: string[]): this {
     this.queryColumns = columns.join(", ");
