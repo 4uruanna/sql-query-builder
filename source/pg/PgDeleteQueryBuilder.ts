@@ -3,12 +3,14 @@ import type { IQuery } from "../interface/IQuery.ts";
 import { PgBuilder } from "./PgBuilder.ts";
 
 /**
- * @todo
+ * PostgreSQL DELETE query builder.
+ * Builds DELETE queries with support for WHERE and JOIN clauses.
  */
 export class PgDeleteQueryBuilder extends PgBuilder
   implements IDeleteQueryBuilder {
   /**
-   * @todo
+   * Builds the final DELETE query.
+   * @returns The query object containing the SQL string and parameters
    */
   public build(): IQuery {
     return {

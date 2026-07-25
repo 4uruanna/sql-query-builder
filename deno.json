@@ -1,8 +1,8 @@
 {
-  "name": "@jackofblades/sql-query-builder",
-  "version": "0.1.10",
+  "name": "@4uruanna/sql-query-builder",
+  "version": "1.0.0",
   "license": "Apache-2.0",
-  "exports": "./source/mod.ts",
+  "exports": "./source/export.ts",
   "tasks": {
   },
   "imports": {

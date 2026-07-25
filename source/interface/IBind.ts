@@ -1,13 +1,18 @@
 /**
- * @todo
+ * Interface for query builders that support parameter binding.
  */
 export interface IBind<T> {
   /**
-   * Returns the next bindable index
-   * e.g.
+   * Sets a parameter value for the query.
+   * @param value - The parameter value
+   * @param name - Optional parameter name or position identifier
+   * @returns The builder instance for method chaining
+   *
+   * @example
    * ```ts
    * builder
-   *  .where(`t.name = ${builder.bind("value")}`)
+   *  .where(`t.name = $1`)
+   *  .setParameter("value")
    *  .build();
    * ```
    */

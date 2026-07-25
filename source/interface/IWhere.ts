@@ -1,20 +1,25 @@
 /**
- * @todo
+ * Interface for query builders that support WHERE conditions.
  */
 export interface IWhere<T> {
   /**
-   * Defines a condition
-   * @param condition
+   * Adds a WHERE condition to the query.
+   * @param condition - The condition string (e.g., "t.name = $1")
+   * @returns The builder instance for method chaining
    */
   where(condition: string): T;
 
   /**
-   * @todo
+   * Adds an AND condition to the current WHERE clause.
+   * @param condition - The condition string to AND with existing conditions
+   * @returns The builder instance for method chaining
    */
   and(condition: string): T;
 
   /**
-   * @todo
+   * Adds an OR condition to the WHERE clause.
+   * @param condition - The condition string for the OR clause
+   * @returns The builder instance for method chaining
    */
   or(condition: string): T;
 }
