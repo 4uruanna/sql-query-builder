@@ -65,7 +65,10 @@ Deno.test("PgSqlSelectQueryBuilder tests", async (group) => {
       result.query,
       `WHERE tn.column_a = $1 AND tn.column_b = $2`,
     );
-    assertStringIncludes(result.query, `OR tn.column_c = $3 AND tn.column_d IN (`);
+    assertStringIncludes(
+      result.query,
+      `OR tn.column_c = $3 AND tn.column_d IN (`,
+    );
 
     assertEquals(result.parameters[0].value, parameters[0]);
     assertEquals(result.parameters[1].value, parameters[1]);

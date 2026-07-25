@@ -74,7 +74,7 @@ export class PgInsertQueryBuilder extends PgBuilder
    * @returns The builder instance for method chaining
    */
   public returning(...columns: string[]): IInsertQueryBuilder {
-    this._lastVal = `\r\nRETURNING ${columns.join(', ')}`;
+    this._lastVal = `\r\nRETURNING ${columns.join(", ")}`;
     return this;
   }
 }

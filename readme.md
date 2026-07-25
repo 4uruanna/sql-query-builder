@@ -1,14 +1,22 @@
 # @4uruanna/sql-query-builder
 
-Lightweight SQL query builder library for Deno and TypeScript with zero non-standard dependencies.
+[![JSR](https://jsr.io/badges/@4uruanna/di?style=flat-square)](https://jsr.io/@4uruanna/sql-query-builder)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue?style=flat-square)](LICENSE)
+[![Deno](https://img.shields.io/badge/Deno->=2.0-000000?style=flat-square&logo=deno)](https://deno.land)
+
+Lightweight SQL query builder library for Deno and TypeScript with zero
+non-standard dependencies.
 
 ## Features
 
-- **Type-safe query building** - Full TypeScript support with interfaces for all query types
-- **PostgreSQL support** - PostgreSQL-specific query builder with parameter binding
+- **Type-safe query building** - Full TypeScript support with interfaces for all
+  query types
+- **PostgreSQL support** - PostgreSQL-specific query builder with parameter
+  binding
 - **Fluent API** - Chainable methods for building complex queries
 - **Zero dependencies** - No external dependencies required
-- **Parameter binding** - Automatic parameter management with positional and named parameters
+- **Parameter binding** - Automatic parameter management with positional and
+  named parameters
 
 ## Installation
 

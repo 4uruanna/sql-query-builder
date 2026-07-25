@@ -61,7 +61,7 @@ Deno.test("PgSqlInsertQueryBuilder tests", async (group) => {
 
     assertStringIncludes(
       options.query,
-      "RETURNING id, name"
+      "RETURNING id, name",
     );
-  })
+  });
 });
