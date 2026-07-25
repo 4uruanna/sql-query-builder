@@ -48,9 +48,20 @@ Deno.test("PgSqlInsertQueryBuilder tests", async (group) => {
       .build();
 
     assertStringIncludes(result.query, `($1, $2, $3)`);
-
     assertEquals(result.parameters[0].value, row[0]);
     assertEquals(result.parameters[1].value, row[1]);
     assertEquals(result.parameters[2].value, row[2]);
   });
+
+  await group.step("with returns", () => {
+    const options = new PgQueryBuilder()
+      .insert()
+      .returning("id", "name")
+      .build();
+
+    assertStringIncludes(
+      options.query,
+      "RETURNING id, name"
+    );
+  })
 });

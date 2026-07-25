@@ -58,8 +58,8 @@ export class PgInsertQueryBuilder extends PgBuilder
     };
   }
 
-  public lastVal(sequence: string = "id"): IInsertQueryBuilder {
-    this._lastVal = `\r\nRETURNING ${sequence}`;
+  public returning(...columns: string[]): IInsertQueryBuilder {
+    this._lastVal = `\r\nRETURNING ${columns.join(', ')}`;
     return this;
   }
 }

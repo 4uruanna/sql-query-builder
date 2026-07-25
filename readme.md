@@ -1,11 +1,13 @@
 # @jackofblades/sql-query-builder
 
+Lightweight sql query builder library for Deno with zero non-standard dependency.
+
 ## Example
 
 ### CRUD PG
 
 ```ts
-import { PgQueryBuilder } from "@jackofblades/sql-query-builder";
+import { PgQueryBuilder } from "@4uruanna/sql-query-builder";
 
 // Insert
 // ....................

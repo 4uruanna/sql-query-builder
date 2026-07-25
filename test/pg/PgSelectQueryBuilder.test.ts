@@ -5,6 +5,7 @@ import { assertEquals } from "@std/assert/equals";
 
 Deno.test("PgSqlSelectQueryBuilder tests", async (group) => {
   const tableName = `${faker.string.nanoid(7)}`;
+  const tableNameB = `${faker.string.nanoid(7)}`;
 
   await group.step("build", () => {
     const result = new PgQueryBuilder()
@@ -39,6 +40,14 @@ Deno.test("PgSqlSelectQueryBuilder tests", async (group) => {
       faker.number.int(),
     ];
 
+    const subquery = new PgQueryBuilder()
+      .select()
+      .from(tableNameB + " b")
+      .columns("b.id")
+      .where("b.id = $4")
+      .setParameter(1)
+      .build();
+
     const result = new PgQueryBuilder()
       .select()
       .setParameter(parameters[0])
@@ -48,13 +57,15 @@ Deno.test("PgSqlSelectQueryBuilder tests", async (group) => {
       .where("tn.column_a = $1")
       .and("tn.column_b = $2")
       .or("tn.column_c = $3")
+      .and(`tn.column_d IN (${subquery.query})`)
+      .setParameter(subquery.parameters[0])
       .build();
 
     assertStringIncludes(
       result.query,
       `WHERE tn.column_a = $1 AND tn.column_b = $2`,
     );
-    assertStringIncludes(result.query, `OR tn.column_c = $3`);
+    assertStringIncludes(result.query, `OR tn.column_c = $3 AND tn.column_d IN (`);
 
     assertEquals(result.parameters[0].value, parameters[0]);
     assertEquals(result.parameters[1].value, parameters[1]);

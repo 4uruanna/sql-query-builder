@@ -26,5 +26,5 @@ export interface IInsertQueryBuilder extends IBuild {
    * @todo
    * @param sequence
    */
-  lastVal(sequence?: string): IInsertQueryBuilder;
+  returning(...columns: string[]): IInsertQueryBuilder;
 }
